@@ -1,0 +1,38 @@
+---
+version: '3.4'
+services:
+  blobstore1:
+    image: mcr.microsoft.com/azure-storage/azurite
+    networks:
+      - my-net
+    restart: always
+    entrypoint: ["azurite", "--blobHost", "0.0.0.0", "--blobPort", "11000", "--queueHost", "0.0.0.0", "--queuePort", "11001", "--tableHost", "0.0.0.0", "--tablePort", "11002"]
+    ports:
+    - 11000:11000
+    - 11001:11001
+    - 11002:11002
+
+  blobstore2:
+    image: mcr.microsoft.com/azure-storage/azurite
+    networks:
+      - my-net
+    restart: always
+    entrypoint: ["azurite", "--blobHost", "0.0.0.0", "--blobPort", "12000", "--queueHost", "0.0.0.0", "--queuePort", "12001", "--tableHost", "0.0.0.0", "--tablePort", "12002"]
+    ports:
+    - 12000:12000
+    - 12001:12001
+    - 12002:12002
+
+  blobstore3:
+    image: mcr.microsoft.com/azure-storage/azurite
+    networks:
+      - my-net
+    restart: always
+    entrypoint:  ["azurite", "--blobHost", "0.0.0.0", "--blobPort", "13000", "--queueHost", "0.0.0.0", "--queuePort", "13001", "--tableHost", "0.0.0.0", "--tablePort", "13002"]
+    ports:
+    - 13000:13000
+    - 13001:13001
+    - 13002:13002
+
+networks:
+  my-net:
